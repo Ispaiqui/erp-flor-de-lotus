@@ -152,6 +152,9 @@ TERMS: tuple[tuple[str, str, str], ...] = (
 		"Se marcado, este lote pode ficar com estoque negativo, mesmo com a trava das configurações de estoque. Isso pode distorcer o custo. Evite usar.",
 		"Ajuda do campo de estoque negativo no lote.",
 	),
+	("Variant Of", "Variante de", "Coluna da lista de produtos."),
+	("Serial No", "Número de série", "Documento e item do menu de estoque."),
+	("Serial and Batch Bundle", "Pacote de série e lote", "Documento e item do menu de estoque."),
 )
 
 

@@ -48,3 +48,4 @@ boot_session = "flor_de_lotus.boot.extend_bootinfo"
 
 after_install = "flor_de_lotus.install.after_install"
 after_migrate = "flor_de_lotus.install.after_migrate"
+before_request = ["flor_de_lotus.boot.use_site_language_for_guests"]

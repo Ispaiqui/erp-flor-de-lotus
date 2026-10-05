@@ -37,6 +37,8 @@ bench --site SEU_SITE clear-cache
 
 O usuário também precisa estar em português do Brasil para ver os nomes da lista. Em **System Settings**, idioma `pt-BR`. Saia e entre de novo, e atualize a página sem cache.
 
+Quem ainda não entrou vê a tela de entrada no idioma do site, e não no idioma do navegador. Um Chrome em inglês, com o site em `pt-BR`, abre em português. Se a pessoa escolher outro idioma (cookie `preferred_language` ou `?_lang=`), essa escolha vale.
+
 Para repor a marca provisória depois de um teste:
 
 ```bash

@@ -110,6 +110,18 @@ def main() -> None:
 	check(flor_de_lotus.install._as_bool("true") is True, "overwrite true")
 	check(flor_de_lotus.install._as_bool("false") is False, "overwrite false")
 	check(flor_de_lotus.install._as_bool(False) is False, "overwrite bool false")
+	check(
+		flor_de_lotus.boot.language_for_guest("pt-BR", "", "") == "pt-BR",
+		"visitante sem escolha usa o idioma do site",
+	)
+	check(
+		flor_de_lotus.boot.language_for_guest("pt-BR", "en", "") is None,
+		"visitante com _lang explícito não é forçado",
+	)
+	check(
+		flor_de_lotus.boot.language_for_guest("pt-BR", "", "en") is None,
+		"visitante com cookie de idioma não é forçado",
+	)
 
 	if errors:
 		print("\n".join(errors), file=sys.stderr)

@@ -48,3 +48,34 @@ def _prefer(context, key: str, value: str, defaults: frozenset) -> None:
 	current = context.get(key)
 	if current in defaults or not current:
 		context[key] = value
+
+
+def language_for_guest(site_language: str | None, explicit: str | None, cookie: str | None) -> str | None:
+	"""Idioma da tela de entrada.
+
+	O Frappe, para quem não entrou, usa o idioma do navegador antes do
+	idioma do site. Um Chrome em inglês abre a marca em inglês mesmo com
+	o site em pt-BR. Se a pessoa não escolheu um idioma (cookie ou
+	``?_lang``), vale o idioma do site.
+	"""
+	if (explicit or "").strip() or (cookie or "").strip():
+		return None
+	return (site_language or "").strip() or None
+
+
+def use_site_language_for_guests() -> None:
+	import frappe
+
+	if getattr(getattr(frappe, "session", None), "user", None) != "Guest":
+		return
+	request = getattr(frappe, "request", None)
+	cookie = ""
+	if request is not None:
+		cookie = request.cookies.get("preferred_language") or ""
+	explicit = ""
+	form = getattr(frappe, "form_dict", None)
+	if form is not None:
+		explicit = form.get("_lang") or ""
+	chosen = language_for_guest(frappe.get_system_settings("language"), explicit, cookie)
+	if chosen:
+		frappe.local.lang = chosen

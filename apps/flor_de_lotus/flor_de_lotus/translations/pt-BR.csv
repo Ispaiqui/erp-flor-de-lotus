@@ -97,3 +97,6 @@
 "Annual Purchase","Compras no ano",""
 "Total Stock Value","Valor total do estoque",""
 "If enabled, the system will allow negative stock entries for this batch, overriding the 'Allow negative stock for Batch' setting in Stock Settings. This may lead to incorrect valuation rates, so it is recommended to avoid using this option.","Se marcado, este lote pode ficar com estoque negativo, mesmo com a trava das configurações de estoque. Isso pode distorcer o custo. Evite usar.",""
+"Variant Of","Variante de",""
+"Serial No","Número de série",""
+"Serial and Batch Bundle","Pacote de série e lote",""

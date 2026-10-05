@@ -137,5 +137,8 @@ O português do Frappe 17 deixa em branco o título **Sign In**, a frase de boas
 | Compras no ano | Annual Purchase | Cartão do Início. |
 | Valor total do estoque | Total Stock Value | Cartão do Início. |
 | Se marcado, este lote pode ficar com estoque negativo, mesmo com a trava das configurações de estoque. Isso pode distorcer o custo. Evite usar. | If enabled, the system will allow negative stock entries for this batch, overriding the 'Allow negative stock for Batch' setting in Stock Settings. This may lead to incorrect valuation rates, so it is recommended to avoid using this option. | Ajuda do campo de estoque negativo no lote. |
+| Variante de | Variant Of | Coluna da lista de produtos. |
+| Número de série | Serial No | Documento e item do menu de estoque. |
+| Pacote de série e lote | Serial and Batch Bundle | Documento e item do menu de estoque. |
 
 A marca desta versão (logo e cores) é provisória. A licença do app é a GPL-3.0.
