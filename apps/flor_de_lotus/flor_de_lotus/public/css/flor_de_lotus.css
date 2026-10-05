@@ -1,0 +1,55 @@
+/* Tema provisório da Flor de Lótus.
+   As cores NÃO estão decididas. Edite flor_de_lotus/brand.py (PALETTE)
+   e rode: python -m flor_de_lotus.build_assets
+   Não espalhe estes hex por outros arquivos. */
+
+:root {
+	--fdl-color-primary: #C46B84;
+	--fdl-color-primary-strong: #9A4E66;
+	--fdl-color-secondary: #1E4D3A;
+	--fdl-color-secondary-soft: #E5F0EA;
+	--fdl-color-surface: #FBF8F6;
+	--fdl-color-ink: #1C2421;
+	--fdl-color-muted: #5C6560;
+	--fdl-color-line: #E7DED8;
+	--fdl-color-on-primary: #FFFFFF;
+
+	/* Ponte com as variáveis que o Desk ainda consulta. */
+	--primary: var(--fdl-color-primary);
+	--primary-color: var(--fdl-color-primary);
+}
+
+.btn-primary,
+.btn-primary:focus,
+.btn-primary:active {
+	background-color: var(--fdl-color-primary);
+	border-color: var(--fdl-color-primary-strong);
+	color: var(--fdl-color-on-primary);
+}
+
+.btn-primary:hover {
+	background-color: var(--fdl-color-primary-strong);
+	border-color: var(--fdl-color-primary-strong);
+	color: var(--fdl-color-on-primary);
+}
+
+.navbar {
+	box-shadow: inset 0 -2px 0 var(--fdl-color-primary);
+}
+
+.navbar-brand img,
+.navbar .navbar-brand img {
+	max-height: 28px;
+	width: auto;
+}
+
+.page-card-head img,
+.for-login .page-card-head img {
+	max-height: 72px;
+	width: auto;
+}
+
+body[data-path="login"],
+.for-login {
+	background: var(--fdl-color-surface);
+}
