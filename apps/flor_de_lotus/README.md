@@ -40,11 +40,13 @@ O usuário também precisa estar em português do Brasil para ver os nomes da li
 Para repor a marca provisória depois de um teste:
 
 ```bash
-bench --site SEU_SITE execute flor_de_lotus.install.apply_branding --kwargs '{"overwrite": true}'
+bench --site SEU_SITE execute flor_de_lotus.install.apply_branding --kwargs "{'overwrite': True}"
 bench --site SEU_SITE clear-cache
 ```
 
 `overwrite` troca também um logo que você já tenha colocado. Sem isso, uma migração não desfaz a sua escolha.
+
+O `--kwargs` do `bench execute` é código Python, não JSON. Use `{'overwrite': True}`. `{"overwrite": true}` quebra com `NameError`, porque `true` não existe no Python.
 
 ## Trocar o logo
 

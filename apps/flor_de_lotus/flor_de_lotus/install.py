@@ -10,7 +10,10 @@ Frappe + ERPNext + este app, a tela pode continuar com o logo do Frappe.
 Não sobrescreve um valor que o dono já tenha trocado. Para repor os
 placeholders:
 
-    bench --site SEU_SITE execute flor_de_lotus.install.apply_branding --kwargs '{"overwrite": true}'
+    bench --site SEU_SITE execute flor_de_lotus.install.apply_branding --kwargs "{'overwrite': True}"
+
+O valor de ``--kwargs`` é avaliado como código Python (``eval``), não como JSON.
+``{"overwrite": true}`` falha com ``NameError`` porque ``true`` não existe no Python.
 """
 
 from __future__ import annotations
@@ -53,6 +56,7 @@ def apply_branding(overwrite: bool = False) -> list[str]:
 		("Website Settings", "splash_image", SPLASH_URL, DEFAULT_LOGO_URLS),
 		("Website Settings", "favicon", FAVICON_URL, DEFAULT_FAVICON_URLS),
 		("Website Settings", "brand_html", BRAND_HTML, frozenset({None, ""})),
+		("Website Settings", "footer_powered", APP_TITLE, frozenset({None, ""})),
 		("Navbar Settings", "app_logo", LOGO_URL, DEFAULT_LOGO_URLS),
 	)
 	for doctype, fieldname, value, defaults in specs:

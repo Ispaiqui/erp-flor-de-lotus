@@ -30,6 +30,10 @@ PDV é a tela em que se lê o código e se registra a venda. Caixa é a sessão 
 
 O módulo Manufacturing e o tipo de movimento Manufacture aparecem como **Fabricação**. Workstation vira **Posto de fabricação**, para não usar a mesma palavra para o setor e para o lugar onde a vela é feita. A BOM, no vocabulário das velas, é **Receita**.
 
+## Tela de entrada
+
+O português do Frappe 17 deixa em branco o título **Sign In**, a frase de boas-vindas, **Forgot password?** e **Send Link**. O app preenche esses textos. O rótulo **Email** vinha como **E-Mail**; aqui fica **E-mail**.
+
 ## Lista
 
 | Termo na operação | Original no ERPNext | Nota |
@@ -78,6 +82,9 @@ O módulo Manufacturing e o tipo de movimento Manufacture aparecem como **Fabric
 | Perfil de PDV | POS Profile | Um perfil por loja. |
 | Abertura de caixa | POS Opening Entry | Abre a sessão de quem opera o caixa. |
 | Fechamento de caixa | POS Closing Entry | Fecha a sessão de quem opera o caixa. |
+| Criar abertura de caixa | Create POS Opening Entry | Título do diálogo que abre o caixa no PDV. |
+| Valor de abertura | Opening Amount | Valor em cada forma de pagamento ao abrir o caixa. |
+| Detalhes da abertura | Opening Balance Details | Tabela de valores iniciais do caixa. |
 | Forma de pagamento | Mode of Payment |  |
 | Empresa | Company |  |
 | Centro de custo | Cost Center |  |
@@ -92,5 +99,43 @@ O módulo Manufacturing e o tipo de movimento Manufacture aparecem como **Fabric
 | Plano de fabricação | Production Plan |  |
 | Vendas | Selling | Módulo. |
 | Compras | Buying | Módulo. |
+| Entrar | Sign In | Título da tela de entrada. |
+| Bem-vindo! Entre para continuar. | Welcome! Please sign in to continue. | Subtítulo da tela de entrada. |
+| Esqueceu a senha? | Forgot password? | Link da tela de entrada. |
+| Enviar link | Send Link | Botão de entrada por link de e-mail. |
+| E-mail | Email | Rótulo do campo na tela de entrada. O pt-BR do Frappe deixa E-Mail. |
+| Comece a digitar para ver os resultados. | Begin typing for results. | Campo de busca do link. |
+| Limpe os filtros para ver todos os registros. | Clear the filters to see all records. | Lista vazia com filtro ativo. |
+| Tem variantes | Has Variants | Filtro da lista de produtos. |
+| Descrição do lote | Batch Description | Campo do lote. |
+| Avaliar por lote | Use Batch-wise Valuation | Campo do lote. |
+| Ferramentas | Tools | Grupo do menu lateral. |
+| Série e lote | Serial & Batch | Grupo do menu lateral de estoque. |
+| Documentação | Documentation | Link no rodapé da lista. |
+| Mostrar todos (inclusive desativados) | Show all (including disabled) | Filtro da árvore de depósitos. |
+| Expandir/recolher | Expand/Collapse | Ação da árvore de depósitos. |
+| Relatórios | Reports | O pt-BR do Frappe deixa esta palavra em minúsculas. |
+| Todos os depósitos | All Warehouses | Nome do depósito raiz criado na instalação. O pt-BR do ERPNext usa Armazéns. |
+| Árvore de {0} | {0} Tree | Título da visualização em árvore. |
+| Bom dia | Good morning | Saudação da página Início. |
+| Boa tarde | Good afternoon | Saudação da página Início. |
+| Boa noite | Good evening | Saudação da página Início. |
+| Conheça o Flor de Lótus | Get to know ERPNext | Título do quadro de início. O original cita o ERPNext. |
+| {0} de {1} passos feitos | {0} of {1} steps done | Progresso do quadro de início. |
+| Convide a equipe | Invite your team | Passo do quadro de início. |
+| Adicione quem trabalha com você e escolha o que cada pessoa pode ver. | Add the people you work with and choose what they can see. | Texto do convite no quadro de início. |
+| Deixe as contas prontas | Get your books ready | Passo de contas no quadro de início. |
+| Faça a primeira venda | Make your first sale | Passo de vendas no quadro de início. |
+| Peça aos fornecedores | Order from your suppliers | Passo de compras no quadro de início. |
+| Acompanhe o estoque | Keep track of your stock | Passo de estoque no quadro de início. |
+| Planeje a fabricação | Plan and run production | Passo de fabricação no quadro de início. |
+| Planeje e entregue os projetos | Plan and deliver projects | Passo de projetos no quadro de início. |
+| Acompanhe o que a empresa tem | Track what your business owns | Passo de ativos no quadro de início. |
+| Cuide da qualidade | Keep quality in check | Passo de qualidade no quadro de início. |
+| Receitas e despesas do ano, e o que sobra de lucro. | Your income and expenses over the year, and what's left as profit. | Texto do gráfico de lucro e perdas no Início. |
+| Vendas no ano | Annual Sales | Cartão do Início. |
+| Compras no ano | Annual Purchase | Cartão do Início. |
+| Valor total do estoque | Total Stock Value | Cartão do Início. |
+| Se marcado, este lote pode ficar com estoque negativo, mesmo com a trava das configurações de estoque. Isso pode distorcer o custo. Evite usar. | If enabled, the system will allow negative stock entries for this batch, overriding the 'Allow negative stock for Batch' setting in Stock Settings. This may lead to incorrect valuation rates, so it is recommended to avoid using this option. | Ajuda do campo de estoque negativo no lote. |
 
 A marca desta versão (logo e cores) é provisória. A licença do app é a GPL-3.0.
