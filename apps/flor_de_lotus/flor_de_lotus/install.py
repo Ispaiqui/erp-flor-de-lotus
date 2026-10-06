@@ -40,6 +40,10 @@ def after_migrate():
 	# Idioma não entra aqui: se o dono voltar para inglês, a migração
 	# não desfaz essa escolha.
 	apply_branding(overwrite=False)
+	# Import tardio: este módulo não puxa o Frappe na conferência do app.
+	from flor_de_lotus.setup_v1 import seed_v1
+
+	seed_v1()
 
 
 def apply_branding(overwrite: bool = False) -> list[str]:

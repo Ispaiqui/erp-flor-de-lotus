@@ -13,7 +13,7 @@ from flor_de_lotus.brand import APP_TITLE, FAVICON_URL, LOGO_URL, MARK_URL, PALE
 app_name = "flor_de_lotus"
 app_title = APP_TITLE
 app_publisher = "Flor de Lótus"
-app_description = "Camada de produto da Flor de Lótus sobre o ERPNext: marca e vocabulário da operação."
+app_description = "Camada de produto da Flor de Lótus sobre o ERPNext: lojas, funções, catálogo e permissão por loja."
 app_color = PALETTE["primary"]
 app_license = "GNU General Public License (v3)"
 app_logo_url = LOGO_URL
@@ -49,3 +49,36 @@ boot_session = "flor_de_lotus.boot.extend_bootinfo"
 after_install = "flor_de_lotus.install.after_install"
 after_migrate = "flor_de_lotus.install.after_migrate"
 before_request = ["flor_de_lotus.boot.use_site_language_for_guests"]
+
+doc_events = {
+	"User": {
+		"validate": "flor_de_lotus.access.validate_user",
+		"on_update": "flor_de_lotus.access.sync_user_permissions",
+	},
+	"Employee": {
+		"validate": "flor_de_lotus.access.validate_employee",
+	},
+	"Loja": {
+		"on_update": "flor_de_lotus.access.sync_loja_links",
+	},
+}
+
+permission_query_conditions = {
+	"Loja": "flor_de_lotus.access.loja_query",
+	"Employee": "flor_de_lotus.access.employee_query",
+	"User": "flor_de_lotus.access.user_query",
+	"Item": "flor_de_lotus.access.item_query",
+	"POS Invoice": "flor_de_lotus.access.pos_invoice_query",
+	"POS Opening Entry": "flor_de_lotus.access.pos_opening_query",
+	"POS Closing Entry": "flor_de_lotus.access.pos_closing_query",
+}
+
+has_permission = {
+	"Loja": "flor_de_lotus.access.loja_has_permission",
+	"Employee": "flor_de_lotus.access.employee_has_permission",
+	"User": "flor_de_lotus.access.user_has_permission",
+	"Item": "flor_de_lotus.access.item_has_permission",
+	"POS Invoice": "flor_de_lotus.access.pos_has_permission",
+	"POS Opening Entry": "flor_de_lotus.access.pos_has_permission",
+	"POS Closing Entry": "flor_de_lotus.access.pos_has_permission",
+}

@@ -2,7 +2,7 @@
 
 Camada de produto para a operação da Flor de Lótus: cinco lojas, um depósito central, PDV e fabricação de velas, em cima do ERPNext.
 
-Esta versão só traz a **marca** e os **nomes em português**. Não há loja, caixa, catálogo de velas nem regra fiscal. Isso vem nas versões seguintes, dentro deste app, sem editar o núcleo do ERPNext.
+A **V1** traz lojas, funções, catálogo de demonstração e a trava de acesso por loja no servidor. A marca e os nomes em português continuam neste app. O núcleo do ERPNext não é editado.
 
 Licença: GPL-3.0, a mesma do ERPNext. O texto está em `license.txt`.
 
@@ -34,6 +34,15 @@ bench --site SEU_SITE clear-cache
 ```
 
 `install-app` grava o nome **Flor de Lótus**, o logo, o favicon e a imagem de abertura nos ajustes do site, se eles ainda estiverem com o padrão do Frappe ou do ERPNext. Se o idioma ainda for inglês, passa para `pt-BR`.
+
+A migração (`bench --site SEU_SITE migrate`, também chamada pelo `install-app`) cria o DocType **Loja**, as cinco funções, os quadros e — se a empresa **Flor de Lótus** já existir — a carga de demonstração. Sem essa empresa, a carga espera: rode o assistente da empresa e migre de novo. A carga pode rodar outra vez; ela não duplica loja, produto nem usuário.
+
+Para repetir só a carga, com a empresa já no site:
+
+```bash
+bench --site SEU_SITE execute flor_de_lotus.setup_v1.seed_v1
+bench --site SEU_SITE clear-cache
+```
 
 O usuário também precisa estar em português do Brasil para ver os nomes da lista. Em **System Settings**, idioma `pt-BR`. Saia e entre de novo, e atualize a página sem cache.
 
@@ -124,13 +133,54 @@ Isso atualiza `flor_de_lotus/translations/pt-BR.csv`. Atualize também a tabela 
 
 O arquivo é `pt-BR.csv`. O idioma `pt` (português genérico) não usa esta lista.
 
-## O que esta versão não faz
+## O que a V1 faz
 
-- Não cria loja, usuário de função, produto, vela, estoque, PDV nem fabricação.
-- Não mexe em arquivo nenhum dentro de `erpnext/`.
-- Não trata de nota fiscal, NFC-e ou NF-e.
+- DocType **Loja**: depósito, centro de custo, perfil de PDV, gerente, endereço. CNPJ, inscrição estadual e endereço fiscal existem e ficam vazios ou só com o texto do endereço, até a definição fiscal.
+- Árvore de depósitos: Central, grupo Lojas com Loja 1 a Loja 5, trânsito, e o grupo Fabricação (insumos e velas acabadas) separado do central.
+- Cinco funções, cada uma com um perfil de função: Dono, Gerente da loja, Caixa, Estoquista, Fabricação.
+- Ao gravar o usuário com loja, o servidor cria User Permission de Loja, depósito, centro de custo e perfil de PDV.
+- Funcionário com loja. O gerente só grava funcionário e usuário da própria loja.
+- Catálogo: grupos, unidade **Unidade**, lista **Varejo Flor de Lótus** (um preço para as cinco lojas) e 18 produtos. O campo `catalogo` separa Produto e Vela. Três itens são vela, só para a função Fabricação não cair numa lista vazia.
+- Quadros iniciais diferentes para Dono, Gerente da loja e Caixa. Estoquista e Fabricação têm função e menu filtrado, sem quadro próprio.
+- Teste de servidor: gerente e caixa da loja 1 não leem nem gravam a loja 2.
 
-O módulo técnico se chama **Flor de Lotus**, sem acento, porque a pasta do módulo segue esse nome. O título que aparece para a pessoa é **Flor de Lótus**.
+Senha de todos os usuários de demonstração: `FlorDemo2026`. Idioma `pt-BR`, fuso `America/Sao_Paulo`.
+
+| Pessoa | E-mail | Função | Loja |
+| --- | --- | --- | --- |
+| Helena | `dono@flor.localhost` | Dono | todas |
+| Marina | `gerente.loja1@flor.localhost` | Gerente da loja | Flor de Lótus Loja 1 |
+| Beatriz | `gerente.loja2@flor.localhost` | Gerente da loja | Flor de Lótus Loja 2 |
+| Ana | `caixa.loja1@flor.localhost` | Caixa | Flor de Lótus Loja 1 |
+| Camila | `caixa.loja2@flor.localhost` | Caixa | Flor de Lótus Loja 2 |
+| Pedro | `estoquista@flor.localhost` | Estoquista | depósito Central |
+| Lúcia | `fabricacao@flor.localhost` | Fabricação | insumos e velas acabadas |
+
+O dono entra no quadro **Dono**. O gerente entra em **Gerente da loja**. O caixa entra em **Caixa**.
+
+## O que ficou para as versões seguintes
+
+- V2: código de barras, movimentação, motivo obrigatório, lote, validade, contagem.
+- V3: falta, pedido de segunda, separação, transferência com trânsito e recebimento.
+- V4: grade do PDV, venda, pagamento (PIX, cartão, crediário) e baixa de estoque. O perfil de PDV da V1 é só o vínculo, com dinheiro e conta de abatimento.
+- V5: catálogo de velas de verdade, receita, ordem de produção, venda a granel.
+- V6: nota fiscal, NFC-e, NF-e. CNPJ por loja ou um só continua em aberto.
+- V7: lucro por loja e consolidado. O quadro do dono nesta versão não é esse painel.
+- V8: alertas e pedidos automáticos.
+
+O módulo técnico se chama **Flor de Lotus**, sem acento, porque a pasta do módulo segue esse nome. O título que aparece para a pessoa é **Flor de Lótus**. Nada em `erpnext/` foi alterado.
+
+## Adaptações em relação à especificação
+
+- O ERPNext já tinha criado o depósito folha **Lojas**. Ele virou o grupo das cinco lojas. O depósito padrão da empresa passou a ser **Central**, porque um grupo não pode ser o depósito padrão.
+- O depósito de trânsito mantém o nome que a instalação deu (**Mercadorias Em Trânsito**), com tipo Transit.
+- Trabalho em andamento e produtos acabados, criados pela instalação, ficaram debaixo do grupo Fabricação.
+- Os nomes de depósito e centro de custo ganham o sufixo da empresa (` - FDL`). É a regra do ERPNext.
+- User Permission de depósito e de centro de custo vale só para aquele documento. Se valesse para todo vínculo, a empresa sumia da tela, porque ela aponta para o depósito padrão. Loja e perfil de PDV limitam funcionário, usuário e sessão de caixa.
+- Os quadros são gravados na migração, em Python, e não em arquivo JSON. As funções ainda não existem quando o Frappe importa JSON.
+- Preço igual nas cinco lojas, numa lista só. O dono ainda não escolheu preço por loja.
+- A função Fabricação só lista item com catálogo Vela. Estoquista e fabricação não têm loja: o estoquista fica no Central, a fabricação nos dois depósitos dela.
+- O quadro Início do ERPNext, com lucro e perda, pede a função Desk User. Os usuários de demonstração não têm essa função, então caem no quadro da função deles.
 
 ## Conferir o app sem um site
 

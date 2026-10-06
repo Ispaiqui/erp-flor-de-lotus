@@ -2,7 +2,7 @@
 
 Nomes que a equipe da loja vê, e o texto original do ERPNext. Os documentos não foram renomeados. A troca está em `flor_de_lotus/translations/pt-BR.csv` e só aparece quando o idioma do usuário é **português do Brasil** (`pt-BR`).
 
-Isto é vocabulário, não regra de negócio. Loja, caixa, velas e permissões ainda não existem neste app.
+Isto é vocabulário. A V1 já grava loja, função e catálogo; os nomes abaixo continuam sendo só a tradução do que o ERPNext chama de outro jeito.
 
 ## Depósito, e não Estoque, para Warehouse
 
@@ -140,5 +140,6 @@ O português do Frappe 17 deixa em branco o título **Sign In**, a frase de boas
 | Variante de | Variant Of | Coluna da lista de produtos. |
 | Número de série | Serial No | Documento e item do menu de estoque. |
 | Pacote de série e lote | Serial and Batch Bundle | Documento e item do menu de estoque. |
+| Acesso | Access | Item de menu que o idioma do Frappe ainda deixava em inglês. |
 
 A marca desta versão (logo e cores) é provisória. A licença do app é a GPL-3.0.

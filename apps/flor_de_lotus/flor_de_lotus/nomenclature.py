@@ -155,6 +155,7 @@ TERMS: tuple[tuple[str, str, str], ...] = (
 	("Variant Of", "Variante de", "Coluna da lista de produtos."),
 	("Serial No", "Número de série", "Documento e item do menu de estoque."),
 	("Serial and Batch Bundle", "Pacote de série e lote", "Documento e item do menu de estoque."),
+	("Access", "Acesso", "Item de menu que o idioma do Frappe ainda deixava em inglês."),
 )
 
 
