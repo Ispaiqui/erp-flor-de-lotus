@@ -1,0 +1,180 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:nome",
+ "creation": "2026-10-06 00:00:00",
+ "description": "Loja da operação: depósito, centro de custo, perfil de PDV, gerente e endereço. CNPJ e inscrição estadual ficam guardados para a parte fiscal.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "nome",
+  "ativa",
+  "empresa",
+  "column_break_main",
+  "gerente",
+  "deposito",
+  "centro_de_custo",
+  "perfil_de_pdv",
+  "section_address",
+  "endereco",
+  "column_break_address",
+  "endereco_fiscal",
+  "section_fiscal",
+  "cnpj",
+  "column_break_fiscal",
+  "inscricao_estadual"
+ ],
+ "fields": [
+  {
+   "fieldname": "nome",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Nome",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "ativa",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Ativa"
+  },
+  {
+   "fieldname": "empresa",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Empresa",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gerente",
+   "fieldtype": "Link",
+   "label": "Gerente",
+   "options": "User"
+  },
+  {
+   "fieldname": "deposito",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Depósito",
+   "options": "Warehouse",
+   "reqd": 1
+  },
+  {
+   "fieldname": "centro_de_custo",
+   "fieldtype": "Link",
+   "label": "Centro de custo",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "perfil_de_pdv",
+   "fieldtype": "Link",
+   "label": "Perfil de PDV",
+   "options": "POS Profile"
+  },
+  {
+   "fieldname": "section_address",
+   "fieldtype": "Section Break",
+   "label": "Endereço"
+  },
+  {
+   "fieldname": "endereco",
+   "fieldtype": "Link",
+   "label": "Endereço",
+   "options": "Address"
+  },
+  {
+   "fieldname": "column_break_address",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "endereco_fiscal",
+   "fieldtype": "Small Text",
+   "label": "Endereço fiscal"
+  },
+  {
+   "fieldname": "section_fiscal",
+   "fieldtype": "Section Break",
+   "label": "Dados fiscais (para depois)"
+  },
+  {
+   "description": "Ainda sem uso. Um CNPJ para todas as lojas ou um por loja fica em aberto.",
+   "fieldname": "cnpj",
+   "fieldtype": "Data",
+   "label": "CNPJ"
+  },
+  {
+   "fieldname": "column_break_fiscal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Ainda sem uso. Preencher na parte fiscal.",
+   "fieldname": "inscricao_estadual",
+   "fieldtype": "Data",
+   "label": "Inscrição estadual"
+  }
+ ],
+ "links": [],
+ "modified": "2026-10-06 00:00:00",
+ "module": "Flor de Lotus",
+ "name": "Loja",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Dono",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gerente da loja"
+  },
+  {
+   "print": 1,
+   "read": 1,
+   "role": "Caixa"
+  },
+  {
+   "print": 1,
+   "read": 1,
+   "role": "Estoquista"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "nome",
+ "track_changes": 1
+}

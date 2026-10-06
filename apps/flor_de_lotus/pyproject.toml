@@ -1,0 +1,39 @@
+[project]
+name = "flor_de_lotus"
+authors = [
+    { name = "Flor de Lótus" },
+]
+description = "Camada de produto da Flor de Lótus sobre o ERPNext"
+requires-python = ">=3.14"
+readme = "README.md"
+license = { text = "GPL-3.0-only" }
+dynamic = ["version"]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/Ispaiqui/erp-flor-de-lotus"
+Repository = "https://github.com/Ispaiqui/erp-flor-de-lotus"
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+# Versão do Frappe deste fork (ERPNext develop / 17). O ERPNext em si
+# não entra aqui: o bench resolveria o pacote público, e o que tem de
+# estar instalado é o ERPNext deste repositório. Isso é exigido em
+# hooks.required_apps.
+[tool.bench.frappe-dependencies]
+frappe = ">=17.0.0-dev,<18.0.0"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["F", "E", "W", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "tab"
+docstring-code-format = true

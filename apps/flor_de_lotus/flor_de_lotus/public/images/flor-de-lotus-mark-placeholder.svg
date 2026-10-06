@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PLACEHOLDER: marca provisória da Flor de Lótus.
+     Substitua este arquivo quando houver o logo definitivo.
+     Cores copiadas de flor_de_lotus/brand.py (PALETTE). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Flor de Lótus, marca provisória">
+  <title>Flor de Lótus — marca provisória</title>
+  <desc>PLACEHOLDER. Não é o logo oficial. Troque este SVG.</desc>
+  <rect width="64" height="64" rx="16" fill="#1E4D3A"/>
+  <g fill="#C46B84" transform="translate(32 42)">
+    <ellipse cx="0" cy="-14" rx="6" ry="13"/>
+    <ellipse cx="0" cy="-13" rx="5.5" ry="12" transform="rotate(-38)"/>
+    <ellipse cx="0" cy="-13" rx="5.5" ry="12" transform="rotate(38)"/>
+    <ellipse cx="0" cy="-11" rx="5" ry="11" transform="rotate(-72)"/>
+    <ellipse cx="0" cy="-11" rx="5" ry="11" transform="rotate(72)"/>
+  </g>
+  <circle cx="32" cy="42" r="4.2" fill="#FBF8F6"/>
+</svg>
