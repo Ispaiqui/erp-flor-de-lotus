@@ -271,8 +271,17 @@ def _ensure_role_profiles() -> None:
 	import frappe
 
 	for role_name in (ROLE_DONO, ROLE_GERENTE, ROLE_CAIXA, ROLE_ESTOQUISTA, ROLE_FABRICACAO):
+		current = frappe.get_all(
+			"Has Role",
+			filters={"parent": role_name, "parenttype": "Role Profile"},
+			pluck="role",
+		)
+		if current == [role_name]:
+			continue
 		if frappe.db.exists("Role Profile", role_name):
 			profile = frappe.get_doc("Role Profile", role_name)
+			if profile.is_locked:
+				profile.unlock()
 		else:
 			profile = frappe.new_doc("Role Profile")
 			profile.role_profile = role_name
@@ -423,7 +432,7 @@ def _seed_warehouses(company: str) -> dict:
 	if transit:
 		frappe.db.set_value("Company", company, "default_in_transit_warehouse", transit, update_modified=False)
 
-	frappe.utils.nestedset.rebuild_tree("Warehouse", "parent_warehouse")
+	frappe.utils.nestedset.rebuild_tree("Warehouse")
 	return {
 		"central": central,
 		"stores": store_warehouses,
